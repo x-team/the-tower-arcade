@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 7d747b7d643934ba7a488b94bb61f488
+guid: 7e3b53103a1194b00a41520412151bb0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4473165607370878645
-    second: EnemyMonodroneIdle_0
+      213: -7703391543255064167
+    second: EnemyHuntsman_0
   - first:
-      213: -4411094024365358815
-    second: EnemyMonodroneIdle_1
+      213: 7999425451222895522
+    second: EnemyHuntsman_1
   - first:
-      213: 3197037106913357735
-    second: EnemyMonodroneIdle_2
+      213: -7525212692967987595
+    second: EnemyHuntsman_2
   - first:
-      213: -4972892615813366938
-    second: EnemyMonodroneIdle_3
+      213: -4262821319194204811
+    second: EnemyHuntsman_3
   - first:
-      213: 2901623575173120807
-    second: EnemyMonodroneIdle_4
+      213: -4680185560788825249
+    second: EnemyHuntsman_4
   - first:
-      213: 434346488518191303
-    second: EnemyMonodroneIdle_5
+      213: 6118872387922563254
+    second: EnemyHuntsman_5
   - first:
-      213: 125876062178622797
-    second: EnemyMonodroneIdle_6
+      213: 1865011770676071545
+    second: EnemyHuntsman_6
   - first:
-      213: 6610191398621589825
-    second: EnemyMonodroneIdle_7
+      213: -2172912069032628572
+    second: EnemyHuntsman_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +127,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemyMonodroneIdle_0
+      name: EnemyHuntsman_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bee5d88b60e31e30800000000000000
-      internalID: 4473165607370878645
+      spriteID: 991a88aa43e081590800000000000000
+      internalID: -7703391543255064167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyMonodroneIdle_1
+      name: EnemyHuntsman_1
       rect:
         serializedVersion: 2
         x: 200
@@ -162,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 121cad61b55a8c2c0800000000000000
-      internalID: -4411094024365358815
+      spriteID: 2ab0c5ba01ba30f60800000000000000
+      internalID: 7999425451222895522
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyMonodroneIdle_2
+      name: EnemyHuntsman_2
       rect:
         serializedVersion: 2
         x: 400
@@ -183,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7af20536f482e5c20800000000000000
-      internalID: 3197037106913357735
+      spriteID: 576e1601de2119790800000000000000
+      internalID: -7525212692967987595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyMonodroneIdle_3
+      name: EnemyHuntsman_3
       rect:
         serializedVersion: 2
         x: 600
@@ -204,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66bf740738cbcfab0800000000000000
-      internalID: -4972892615813366938
+      spriteID: 575a778789a67d4c0800000000000000
+      internalID: -4262821319194204811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyMonodroneIdle_4
+      name: EnemyHuntsman_4
       rect:
         serializedVersion: 2
         x: 800
@@ -225,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 723c716a443a44820800000000000000
-      internalID: 2901623575173120807
+      spriteID: f5b05467704ac0fb0800000000000000
+      internalID: -4680185560788825249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyMonodroneIdle_5
+      name: EnemyHuntsman_5
       rect:
         serializedVersion: 2
         x: 0
@@ -246,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c8a09d74db170600800000000000000
-      internalID: 434346488518191303
+      spriteID: 6b01214840a9ae450800000000000000
+      internalID: 6118872387922563254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyMonodroneIdle_6
+      name: EnemyHuntsman_6
       rect:
         serializedVersion: 2
         x: 200
@@ -267,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4db1e39c933fb100800000000000000
-      internalID: 125876062178622797
+      spriteID: 97cc11df25ad1e910800000000000000
+      internalID: 1865011770676071545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyMonodroneIdle_7
+      name: EnemyHuntsman_7
       rect:
         serializedVersion: 2
         x: 400
@@ -288,8 +288,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 141be240e0e1cbb50800000000000000
-      internalID: 6610191398621589825
+      spriteID: 4aea62d5cf348d1e0800000000000000
+      internalID: -2172912069032628572
       vertices: []
       indices: 
       edges: []
