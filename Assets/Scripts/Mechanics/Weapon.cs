@@ -2,22 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+namespace Platformer.Mechanics
 {
-    public Transform firePoint;
-    public GameObject bulletPrefab;
-
-    // Update is called once per frame
-    void Update()
+    // <summary>
+    /// A simple controller for weapon. Spawn bullets within intervals
+    /// </summary>
+    ///
+    [RequireComponent(typeof(Transform))]
+    public class Weapon : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        public Transform firePoint;
+        public GameObject bulletPrefab;
+        public int bulletsPerShoot = 1;
+        public float interval = 0.5f;
+
+        private bool isShooting = false;
+
+        public void Shoot()
         {
-            Shoot();
+            if (isShooting) return;
+            StartCoroutine(SpawnBullets());
         }
-    }
 
-    void Shoot()
-    {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        private IEnumerator SpawnBullets()
+        {
+            isShooting = true;
+
+            for (int i = 0; i < bulletsPerShoot; i++)
+            {
+                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                yield return new WaitForSeconds(interval);
+            }
+
+            isShooting = false;
+        }
     }
 }

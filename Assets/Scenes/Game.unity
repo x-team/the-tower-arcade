@@ -6824,6 +6824,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292457042}
     m_Modifications:
+    - target: {fileID: 1691483821058032813, guid: c4cfeb75460854dea87fb80e3a2b2517,
+        type: 3}
+      propertyPath: interval
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691483821058032813, guid: c4cfeb75460854dea87fb80e3a2b2517,
+        type: 3}
+      propertyPath: bulletsPerShoot
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6169598032471348440, guid: c4cfeb75460854dea87fb80e3a2b2517,
         type: 3}
       propertyPath: m_LocalPosition.x
