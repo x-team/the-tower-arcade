@@ -30,10 +30,20 @@ namespace Platformer.Mechanics
             var player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {
-                //var ev = Schedule<PlayerEnemyCollision>();
-                //ev.player = player;
+                OnHitPlayer(player);
             }
+            OnCollide();
+        }
+
+        public virtual void OnCollide()
+        {
             Destroy(gameObject);
+        }
+
+        public virtual void OnHitPlayer(PlayerController player)
+        {
+            //var ev = Schedule<PlayerEnemyCollision>();
+            //ev.player = player;
         }
     }
 }
