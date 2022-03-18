@@ -16,15 +16,6 @@ namespace Platformer.Mechanics
         public float secondsToExplode = 2;
         private bool exploded = false;
 
-        public void OnExplosionCollide(Collider2D collision)
-        {
-            var player = collision.gameObject.GetComponent<PlayerController>();
-            if (player != null)
-            {
-                
-            }
-        }
-
         public override void OnHitPlayer(PlayerController player){ }
         public override void OnCollide(){ }
 

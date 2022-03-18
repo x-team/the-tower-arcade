@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Platformer.Gameplay;
+using static Platformer.Core.Simulation;
 
 namespace Platformer.Mechanics
 {
     // <summary>
-    /// A simple trigger for colliders
+    /// An explosion collider
     /// </summary>
     public class Explosion : MonoBehaviour
     {
@@ -20,8 +20,8 @@ namespace Platformer.Mechanics
 
         public virtual void OnHitPlayer(PlayerController player)
         {
-            //var ev = Schedule<PlayerEnemyCollision>();
-            //ev.player = player;
+            var ev = Schedule<PlayerBulletCollision>();
+            ev.player = player;
         }
     }
 

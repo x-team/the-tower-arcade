@@ -42,8 +42,8 @@ namespace Platformer.Mechanics
 
         public virtual void OnHitPlayer(PlayerController player)
         {
-            //var ev = Schedule<PlayerEnemyCollision>();
-            //ev.player = player;
+            var ev = Schedule<PlayerBulletCollision>();
+            ev.player = player;
         }
     }
 }
