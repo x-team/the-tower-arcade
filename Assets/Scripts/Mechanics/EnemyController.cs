@@ -19,6 +19,7 @@ namespace Platformer.Mechanics
         internal AnimationController control;
         internal Collider2D _collider;
         internal AudioSource _audio;
+        internal Weapon weapon;
         SpriteRenderer spriteRenderer;
 
         public Bounds Bounds => _collider.bounds;
@@ -29,6 +30,7 @@ namespace Platformer.Mechanics
             _collider = GetComponent<Collider2D>();
             _audio = GetComponent<AudioSource>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+            weapon = GetComponent<Weapon>();
         }
 
         void OnCollisionEnter2D(Collision2D collision)
@@ -49,6 +51,24 @@ namespace Platformer.Mechanics
                 if (mover == null) mover = path.CreateMover(control.maxSpeed * 0.5f);
                 control.move.x = Mathf.Clamp(mover.Position.x - transform.position.x, -1, 1);
             }
+        }
+
+        public void Kill()
+        {
+            _collider.enabled = false;
+            control.enabled = false;
+
+            if(weapon != null)
+            {
+                weapon.enabled = false;
+            }
+
+            Schedule<EnemyDestroy>(2).enemy = this;
+        }
+
+        public void DestroyInstance()
+        {
+            Destroy(gameObject);
         }
 
     }

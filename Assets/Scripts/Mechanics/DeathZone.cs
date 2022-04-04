@@ -32,7 +32,7 @@ namespace Platformer.Mechanics
             {
                 var ev = Schedule<PlayerEnteredDeathZone>();
                 ev.deathzone = this;
-            }
+            } 
         }
     }
 }
