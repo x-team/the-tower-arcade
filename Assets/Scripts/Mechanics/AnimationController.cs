@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Platformer.Core;
 using Platformer.Model;
 using UnityEngine;
+using System.Linq;
 
 namespace Platformer.Mechanics
 {
@@ -39,11 +40,13 @@ namespace Platformer.Mechanics
         SpriteRenderer spriteRenderer;
         Animator animator;
         PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        Transform[] childs;
 
         protected virtual void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            childs = transform.Cast<Transform>().ToArray();
         }
 
         protected override void ComputeVelocity()
@@ -63,9 +66,20 @@ namespace Platformer.Mechanics
             }
 
             if (move.x > 0.01f)
+            {
                 spriteRenderer.flipX = false;
+                foreach (Transform child in transform) {
+                    child.rotation = Quaternion.identity;
+                }
+            }
             else if (move.x < -0.01f)
+            {
                 spriteRenderer.flipX = true;
+                foreach (Transform child in transform)
+                {
+                    child.rotation = Quaternion.Euler(0, 180, 0);
+                }
+            }
 
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
