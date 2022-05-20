@@ -44,6 +44,13 @@ namespace Platformer.Mechanics
             }
         }
 
+        public void Fatality()
+        {
+            currentHP = 0;
+            var ev = Schedule<HealthIsZero>();
+            ev.health = this;
+        }
+
         /// <summary>
         /// Decrement the HP of the entitiy until HP reaches 0.
         /// </summary>

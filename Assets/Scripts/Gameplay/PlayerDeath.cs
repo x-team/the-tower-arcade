@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Platformer.Core;
 using Platformer.Model;
@@ -19,22 +19,18 @@ namespace Platformer.Gameplay
             var player = model.player;
             if (player.health.IsAlive)
             {
-                player.health.Decrement();
-
                 if (player.audioSource && player.ouchAudio)
                     player.audioSource.PlayOneShot(player.ouchAudio);
                 player.animator.SetTrigger("hurt");
 
-                if (!player.health.IsAlive)
-                {
-                    player.health.Die();
-                    model.virtualCamera.m_Follow = null;
-                    model.virtualCamera.m_LookAt = null;
-                    //player.collider.enabled = false;
-                    player.controlEnabled = false;
-                    player.animator.SetBool("dead", true);
-                    Simulation.Schedule<PlayerSpawn>(2);
-                }
+                player.health.Fatality();
+                model.virtualCamera.m_Follow = null;
+                model.virtualCamera.m_LookAt = null;
+                player.collider2d.enabled = false;
+                player.controlEnabled = false;
+                player.animator.SetBool("dead", true);
+                Simulation.Schedule<GameplayIsOver>(2);
+                //Simulation.Schedule<PlayerSpawn>(2);
             }
         }
     }

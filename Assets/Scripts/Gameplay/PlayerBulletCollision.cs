@@ -17,7 +17,7 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            Schedule<PlayerDeath>();
+            Schedule<PlayerDamage>();
         }
     }
 }
