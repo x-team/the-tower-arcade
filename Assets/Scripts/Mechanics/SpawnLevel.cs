@@ -9,10 +9,14 @@ namespace Platformer.Mechanics
     {
 
         public GameObject[] levelPrefabs;
+        [SerializeField]
+        private float levelHeight = 12.5f;
 
         public void SpawnNewLevel(GameObject trigger)
         {
-            Instantiate(levelPrefabs[0], new Vector3(trigger.transform.position.x, trigger.transform.position.y + 20, trigger.transform.position.z), trigger.transform.rotation);
+            Vector3 position = new Vector3(trigger.transform.position.x, trigger.transform.position.y + levelHeight, trigger.transform.position.z);
+            LevelController level = Instantiate(levelPrefabs[0], position, trigger.transform.rotation).GetComponent<LevelController>();
+            level.spawnLevel.AddListener(SpawnNewLevel);
         }
     }
 }

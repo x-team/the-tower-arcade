@@ -18,17 +18,16 @@ namespace Platformer.Mechanics
         public bool randomAnimationStartTime = false;
         [Tooltip("List of frames that make up the animation.")]
         public Sprite[] idleAnimation, collectedAnimation;
+        [Tooltip("Frames per second at which tokens are animated.")]
+        public float frameRate = 12;
 
         internal Sprite[] sprites = new Sprite[0];
-
         internal SpriteRenderer _renderer;
 
-        //unique index which is assigned by the TokenController in a scene.
-        internal int tokenIndex = -1;
-        internal TokenController controller;
         //active frame in animation, updated by the controller.
         internal int frame = 0;
         internal bool collected = false;
+        float nextFrameTime = 0;
 
         void Awake()
         {
@@ -36,6 +35,27 @@ namespace Platformer.Mechanics
             if (randomAnimationStartTime)
                 frame = Random.Range(0, sprites.Length);
             sprites = idleAnimation;
+        }
+
+        void Update()
+        {
+            //if it's time for the next frame...
+            if (Time.time - nextFrameTime > (1f / frameRate))
+            {
+                //update all tokens with the next animation frame.
+                _renderer.sprite = sprites[frame];
+
+                if (collected && frame == sprites.Length - 1)
+                {
+                    Disable();
+                }
+                else
+                {
+                    frame = (frame + 1) % sprites.Length;
+                }
+                //calculate the time of the next frame.
+                nextFrameTime += 1f / frameRate;
+            }
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -48,15 +68,18 @@ namespace Platformer.Mechanics
         void OnPlayerEnter(PlayerController player)
         {
             if (collected) return;
-            //disable the gameObject and remove it from the controller update list.
+            collected = true;
             frame = 0;
             sprites = collectedAnimation;
-            if (controller != null)
-                collected = true;
             //send an event into the gameplay system to perform some behaviour.
             var ev = Schedule<PlayerTokenCollision>();
             ev.token = this;
             ev.player = player;
+        }
+
+        private void Disable()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
