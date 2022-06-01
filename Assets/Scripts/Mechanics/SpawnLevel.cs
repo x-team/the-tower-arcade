@@ -14,7 +14,7 @@ namespace Platformer.Mechanics
         [SerializeField]
         private float levelHeight = 12.5f;
         private LinkedList<LevelController> levels = new LinkedList<LevelController>();
-        private int offsetToClean = 3;
+        private int offsetToClean = 4;
         private bool needToDestroy => offsetToClean == 0;
 
         private void Awake()
