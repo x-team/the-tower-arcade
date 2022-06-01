@@ -6965,6 +6965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelPrefabs:
   - {fileID: 3919678696809860557, guid: 87ae388f143924b6aa007400f9f790fc, type: 3}
+  firstLevel: {fileID: 756800897}
   levelHeight: 12.5
 --- !u!4 &1283128767
 Transform:
