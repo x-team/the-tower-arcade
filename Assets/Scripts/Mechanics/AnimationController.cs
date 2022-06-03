@@ -51,17 +51,20 @@ namespace Platformer.Mechanics
 
         protected override void ComputeVelocity()
         {
-            if (jump && IsGrounded)
+            if (canMoveOnYAxis)
             {
-                velocity.y = jumpTakeOffSpeed * model.jumpModifier;
-                jump = false;
-            }
-            else if (stopJump)
-            {
-                stopJump = false;
-                if (velocity.y > 0)
+                if (jump && IsGrounded)
                 {
-                    velocity.y = velocity.y * model.jumpDeceleration;
+                    velocity.y = jumpTakeOffSpeed * model.jumpModifier;
+                    jump = false;
+                }
+                else if (stopJump)
+                {
+                    stopJump = false;
+                    if (velocity.y > 0)
+                    {
+                        velocity.y = velocity.y * model.jumpDeceleration;
+                    }
                 }
             }
 

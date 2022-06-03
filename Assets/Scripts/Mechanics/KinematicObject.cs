@@ -24,6 +24,11 @@ namespace Platformer.Mechanics
         /// </summary>
         public Vector2 velocity;
 
+        // <summary>
+        /// Set to true to enable X Axis Movement
+        /// </summary>
+        public bool canMoveOnYAxis = true;
+
         /// <summary>
         /// Is the entity currently sitting on a surface?
         /// </summary>
@@ -46,7 +51,7 @@ namespace Platformer.Mechanics
         /// <param name="value"></param>
         public void Bounce(float value)
         {
-            velocity.y = value;
+            if (canMoveOnYAxis) velocity.y = value;
         }
 
         /// <summary>
@@ -55,7 +60,7 @@ namespace Platformer.Mechanics
         /// <param name="dir"></param>
         public void Bounce(Vector2 dir)
         {
-            velocity.y = dir.y;
+            if (canMoveOnYAxis) velocity.y = dir.y;
             velocity.x = dir.x;
         }
 
@@ -101,28 +106,43 @@ namespace Platformer.Mechanics
 
         protected virtual void FixedUpdate()
         {
-            //if already falling, fall faster than the jump speed, otherwise use normal gravity.
-            if (velocity.y < 0)
-                velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
-            else
-                velocity += Physics2D.gravity * Time.deltaTime;
+            if (canMoveOnYAxis)
+            {
+                //if already falling, fall faster than the jump speed, otherwise use normal gravity.
 
+                if (velocity.y < 0)
+                    velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+                else
+                    velocity += Physics2D.gravity * Time.deltaTime;
+
+                IsGrounded = false;
+            } else
+            {
+                IsGrounded = true;
+            }
+          
             velocity.x = targetVelocity.x;
-
-            IsGrounded = false;
 
             var deltaPosition = velocity * Time.deltaTime;
 
-            var moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
+            if (canMoveOnYAxis)
+            {
+                var moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
-            var move = moveAlongGround * deltaPosition.x;
+                var move = moveAlongGround * deltaPosition.x;
 
-            PerformMovement(move, false);
+                PerformMovement(move, false);
 
-            move = Vector2.up * deltaPosition.y;
+                move = Vector2.up * deltaPosition.y;
 
-            PerformMovement(move, true);
+                PerformMovement(move, true);
 
+            } else
+            {
+                var move = deltaPosition;
+
+                PerformMovement(move, false);
+            }
         }
 
         void PerformMovement(Vector2 move, bool yMovement)
@@ -137,33 +157,38 @@ namespace Platformer.Mechanics
                 {
                     var currentNormal = hitBuffer[i].normal;
 
-                    //is this surface flat enough to land on?
-                    if (currentNormal.y > minGroundNormalY)
+                    if(canMoveOnYAxis)
                     {
-                        IsGrounded = true;
-                        // if moving up, change the groundNormal to new surface normal.
-                        if (yMovement)
+                        //is this surface flat enough to land on?
+                        if (currentNormal.y > minGroundNormalY)
                         {
-                            groundNormal = currentNormal;
-                            currentNormal.x = 0;
+                            IsGrounded = true;
+                            // if moving up, change the groundNormal to new surface normal.
+                            if (yMovement)
+                            {
+                                groundNormal = currentNormal;
+                                currentNormal.x = 0;
+                            }
+                        }
+                        if (IsGrounded)
+                        {
+                            //how much of our velocity aligns with surface normal?
+                            var projection = Vector2.Dot(velocity, currentNormal);
+
+                            if (projection < 0)
+                            {
+                                //slower velocity if moving against the normal (up a hill).
+                                velocity = velocity - projection * currentNormal;
+                            }
+                        }
+                        else
+                        {
+                            //We are airborne, but hit something, so cancel vertical up and horizontal velocity.
+                            velocity.x *= 0;
+                            velocity.y = Mathf.Min(velocity.y, 0);
                         }
                     }
-                    if (IsGrounded)
-                    {
-                        //how much of our velocity aligns with surface normal?
-                        var projection = Vector2.Dot(velocity, currentNormal);
-                        if (projection < 0)
-                        {
-                            //slower velocity if moving against the normal (up a hill).
-                            velocity = velocity - projection * currentNormal;
-                        }
-                    }
-                    else
-                    {
-                        //We are airborne, but hit something, so cancel vertical up and horizontal velocity.
-                        velocity.x *= 0;
-                        velocity.y = Mathf.Min(velocity.y, 0);
-                    }
+                    
                     //remove shellDistance from actual move distance.
                     var modifiedDistance = hitBuffer[i].distance - shellRadius;
                     distance = modifiedDistance < distance ? modifiedDistance : distance;
