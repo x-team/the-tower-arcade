@@ -2,20 +2,16 @@ using UnityEngine;
 
 namespace Platformer.Mechanics
 {
-    public class PatrolPathController : MonoBehaviour
+    /// <summary>
+    /// A controller for objects for moving on a patrol mode on a path
+    /// </summary>
+    public class PatrolPathController : MoverController
     {
         public PatrolPath path;
-        internal AnimationController control;
+
         private Vector2 position;
         private float direction;
         private float defaultDirection = 1;
-        private float speed;
-
-        void Awake()
-        {
-            control = GetComponent<AnimationController>();
-            speed = control.maxSpeed * 0.5f;
-        }
 
         private void Start()
         {
@@ -24,11 +20,13 @@ namespace Platformer.Mechanics
             direction = defaultDirection;
         }
 
-        private void FixedUpdate()
+        internal override void Move()
         {
+            base.Move();
+
             if (path != null)
             {
-                
+
                 if (transform.position.x <= path.startAbsolutePosition.x)
                 {
                     direction = 1;
@@ -38,12 +36,10 @@ namespace Platformer.Mechanics
                     direction = -1;
                 }
 
-                float distance = speed * direction;
-                position.x = distance;
-                
+                position.x = speed * direction;
+
                 control.move.x = position.x;
             }
         }
-
     }
 }

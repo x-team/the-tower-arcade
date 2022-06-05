@@ -14,9 +14,9 @@ namespace Platformer.Mechanics
     public class AnimationController : KinematicObject
     {
         /// <summary>
-        /// Max horizontal speed.
+        /// Horizontal speed.
         /// </summary>
-        public float maxSpeed = 7;
+        public float maxSpeed = 2;
         /// <summary>
         /// Max jump velocity
         /// </summary>
@@ -71,14 +71,14 @@ namespace Platformer.Mechanics
             if (move.x > 0.01f)
             {
                 spriteRenderer.flipX = false;
-                foreach (Transform child in transform) {
+                foreach (Transform child in childs) {
                     child.rotation = Quaternion.identity;
                 }
             }
             else if (move.x < -0.01f)
             {
                 spriteRenderer.flipX = true;
-                foreach (Transform child in transform)
+                foreach (Transform child in childs)
                 {
                     child.rotation = Quaternion.Euler(0, 180, 0);
                 }

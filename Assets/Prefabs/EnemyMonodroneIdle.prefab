@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5202059517136943502}
   - component: {fileID: 5202059517136943503}
   - component: {fileID: 5202059517136943496}
+  - component: {fileID: 1187104346}
   m_Layer: 3
   m_Name: EnemyMonodroneIdle
   m_TagString: Player
@@ -142,8 +143,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020662189, y: -0.3607375}
-  m_Size: {x: 0.88803756, y: 1.6457232}
+  m_Offset: {x: -0.020662189, y: -0.08344495}
+  m_Size: {x: 0.88803756, y: 1.0911381}
   m_Direction: 0
 --- !u!114 &5202059517136943502
 MonoBehaviour:
@@ -161,7 +162,7 @@ MonoBehaviour:
   gravityModifier: 0
   velocity: {x: 0, y: 0}
   canMoveOnYAxis: 0
-  maxSpeed: 3
+  speed: 1
   jumpTakeOffSpeed: 0
   move: {x: 0, y: 0}
   jump: 0
@@ -276,3 +277,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1187104346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5202059517136943497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d257078f22b404a0a85e49d7c0692266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 0}

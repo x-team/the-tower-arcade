@@ -19,7 +19,6 @@ namespace Platformer.Mechanics
         internal Collider2D _collider;
         internal AudioSource _audio;
         internal Weapon weapon;
-        SpriteRenderer spriteRenderer;
 
         public Bounds Bounds => _collider.bounds;
 
@@ -28,7 +27,6 @@ namespace Platformer.Mechanics
             control = GetComponent<AnimationController>();
             _collider = GetComponent<Collider2D>();
             _audio = GetComponent<AudioSource>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
             weapon = GetComponent<Weapon>();
         }
 
@@ -40,15 +38,6 @@ namespace Platformer.Mechanics
                 var ev = Schedule<PlayerEnemyCollision>();
                 ev.player = player;
                 ev.enemy = this;
-            }
-        }
-
-        void Update()
-        {
-            if (path != null)
-            {
-                //if (mover == null) mover = path.CreateMover(control.maxSpeed * 0.5f);
-                //control.move.x = Mathf.Clamp(mover.Position.x - transform.position.x, -1, 1);
             }
         }
 
