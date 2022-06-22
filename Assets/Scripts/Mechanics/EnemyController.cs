@@ -41,11 +41,6 @@ namespace Platformer.Mechanics
             }
         }
 
-        private void FixedUpdate()
-        {
-            //body
-        }
-
         public void Kill()
         {
             _collider.enabled = false;

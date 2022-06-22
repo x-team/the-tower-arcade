@@ -15,6 +15,8 @@ namespace Platformer.Mechanics
         public int minInvervalInSeconds = 2;
         public int maxIntervalInSeconds = 5;
 
+        public bool canShoot = false;
+
         void Awake()
         {
             weapon = GetComponent<Weapon>();
@@ -22,11 +24,20 @@ namespace Platformer.Mechanics
 
         private void Start()
         {
+            if (!canShoot) return;
+            Attack();
+        }
+
+        public void EnableShoot()
+        {
+            if (canShoot) return;
+            canShoot = true;
             Attack();
         }
 
         private void Attack()
         {
+            if (!canShoot) return;
             StartCoroutine(Shoot());
         }
 

@@ -42,6 +42,11 @@ namespace Platformer.Mechanics
 
         public Bounds Bounds => collider2d.bounds;
 
+        /// <summary>
+        /// The Field of View Distance to Detect Enemies
+        /// </summary>
+        public float fieldOfViewDistance = 8f;
+
         void Awake()
         {
             health = GetComponent<Health>();
@@ -69,6 +74,7 @@ namespace Platformer.Mechanics
                 move.x = 0;
             }
             UpdateJumpState();
+            CastEnemies();
             base.Update();
         }
 
@@ -129,6 +135,28 @@ namespace Platformer.Mechanics
             targetVelocity = move * maxSpeed;
         }
 
+        private void CastEnemies()
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, fieldOfViewDistance, 3);
+
+            foreach(Collider collider in hitColliders)
+            {
+                print("oi");
+                var enemy = collider.GetComponent<EnemyShooterController>();
+                if( enemy != null )
+                {
+                    enemy.EnableShoot();
+                }
+            }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
+            Gizmos.DrawWireSphere(transform.position, fieldOfViewDistance);
+        }
+
         public enum JumpState
         {
             Grounded,
@@ -137,5 +165,6 @@ namespace Platformer.Mechanics
             InFlight,
             Landed
         }
+
     }
 }

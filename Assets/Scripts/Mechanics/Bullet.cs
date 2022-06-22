@@ -12,7 +12,7 @@ namespace Platformer.Mechanics
     [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
     public class Bullet : MonoBehaviour
     {
-        public float speed = 15f;
+        public Vector2 speed = new Vector2(15f, 15f);
         private Rigidbody2D rigidbody2D;
 
         private void Awake()
@@ -22,7 +22,7 @@ namespace Platformer.Mechanics
 
         void Start()
         {
-            rigidbody2D.velocity = transform.right * speed;
+            rigidbody2D.velocity = speed;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

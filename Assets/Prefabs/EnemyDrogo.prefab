@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8715158694334524668}
   - component: {fileID: 2912112662664648211}
   - component: {fileID: 7327544591423065717}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: EnemyDrogo
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -147,6 +147,7 @@ MonoBehaviour:
   minGroundNormalY: 0.65
   gravityModifier: 1
   velocity: {x: 0, y: 0}
+  canMoveOnYAxis: 1
   maxSpeed: 5
   jumpTakeOffSpeed: 7
   move: {x: 0, y: 0}
@@ -328,7 +329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4185530165342518409}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
