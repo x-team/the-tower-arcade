@@ -10,6 +10,7 @@ namespace Platformer.Mechanics
     {
         private bool didTriggerNextLevel = false;
         public UnityEvent<GameObject> spawnLevel = new UnityEvent<GameObject>();
+        public EnemyPlaceholder[] placeholders;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

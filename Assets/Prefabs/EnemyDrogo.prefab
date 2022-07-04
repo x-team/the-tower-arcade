@@ -279,7 +279,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8014660008404353476, guid: 50aa0df187a894383b4312d08408a0ec,
     type: 3}
   bulletsPerShoot: 2
-  interval: 0.2
+  intervalToShoot: 0.5
+  speed: {x: 2, y: 4}
 --- !u!114 &2912112662664648211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minInvervalInSeconds: 2
   maxIntervalInSeconds: 5
+  canShoot: 0
 --- !u!61 &7327544591423065717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -344,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8093884048460702738}
   m_LocalRotation: {x: -0, y: -0, z: 0.2638572, w: 0.9645618}
-  m_LocalPosition: {x: 0.207, y: 0.581, z: 0}
+  m_LocalPosition: {x: 0.068, y: 0.499, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3501880597971413206}

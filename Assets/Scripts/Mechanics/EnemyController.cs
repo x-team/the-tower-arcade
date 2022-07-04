@@ -54,6 +54,17 @@ namespace Platformer.Mechanics
             Schedule<EnemyDestroy>(2).enemy = this;
         }
 
+        public void Reset()
+        {
+            _collider.enabled = true;
+            control.enabled = true;
+
+            if (weapon != null)
+            {
+                weapon.enabled = true;
+            }
+        }
+
         public void DestroyInstance()
         {
             Destroy(gameObject);

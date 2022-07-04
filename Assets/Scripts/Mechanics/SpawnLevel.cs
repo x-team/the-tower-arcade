@@ -16,6 +16,8 @@ namespace Platformer.Mechanics
         private LinkedList<LevelController> levels = new LinkedList<LevelController>();
         private int offsetToClean = 4;
         private bool needToDestroy => offsetToClean == 0;
+        [SerializeField]
+        private SpawnEnemies spawnEnemies;
 
         private void Awake()
         {
@@ -28,6 +30,8 @@ namespace Platformer.Mechanics
             Vector3 position = new Vector3(trigger.transform.position.x, trigger.transform.position.y + levelHeight, trigger.transform.position.z);
             LevelController level = Instantiate(levelPrefabs[0], position, trigger.transform.rotation).GetComponent<LevelController>();
             level.spawnLevel.AddListener(SpawnNewLevel);
+
+            spawnEnemies.SpawnEnemiesForLevel(level);
 
             var node = new LinkedListNode<LevelController>(level);
             levels.AddLast(node);
