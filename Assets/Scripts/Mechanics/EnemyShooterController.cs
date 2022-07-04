@@ -15,7 +15,7 @@ namespace Platformer.Mechanics
         public int minInvervalInSeconds = 2;
         public int maxIntervalInSeconds = 5;
 
-        public bool canShoot = false;
+        public bool canShoot = true;
 
         void Awake()
         {

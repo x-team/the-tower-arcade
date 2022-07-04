@@ -15,6 +15,14 @@ namespace Platformer.Mechanics
 
         private void Start()
         {
+            if(path != null)
+            {
+                SetPath(path);
+            }
+        }
+        public void SetPath(PatrolPath path)
+        {
+            this.path = path;
             transform.position = path.startAbsolutePosition;
             position = path.startAbsolutePosition;
             direction = defaultDirection;

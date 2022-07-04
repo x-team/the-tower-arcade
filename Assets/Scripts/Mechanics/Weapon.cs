@@ -28,7 +28,7 @@ namespace Platformer.Mechanics
         private IEnumerator SpawnBullets()
         {
             isShooting = true;
-           
+
             for (int i = 0; i < bulletsPerShoot; i++)
             {
                 GameObject bulletObject = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

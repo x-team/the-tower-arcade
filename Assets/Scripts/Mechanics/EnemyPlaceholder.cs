@@ -39,7 +39,19 @@ namespace Platformer.Mechanics
                     weapon.speed = weaponSpeed;
                 }
 
-                enemy.path = patrolPath;
+                PatrolPathController patrolPathController = enemy.GetComponent<PatrolPathController>();
+
+                if(patrolPathController != null)
+                {
+                    patrolPathController.SetPath(patrolPath);
+                }
+
+                EnemyShooterController enemyShooterController = enemy.GetComponent<EnemyShooterController>();
+
+                if (enemyShooterController != null)
+                {
+                    enemyShooterController.EnableShoot();
+                }
             }
         }
 
